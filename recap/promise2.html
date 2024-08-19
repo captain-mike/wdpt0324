@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // let p = new Promise((success, reject)=>{
+        //     let age = 3
+        //     if(age > 18){
+        //         success('Sei maggiorenne puoi accedere')
+        //     }
+        //     reject('Non sei maggiorenne')
+        // })
+
+        async function p(){
+            let age = 3
+            if(age > 18){
+                return 'Sei maggiorenne puoi accedere'
+            }
+            return 'Non sei maggiorenne'
+        }
+
+        console.log(p);
+
+        p().then( data =>{
+            console.log(data);            
+        })
+
+        async function gestisci(){
+            const data = await p()
+            console.log(data);
+        }
+
+        gestisci()
+        
+
+        
+
+    </script>
+</body>
+</html>
