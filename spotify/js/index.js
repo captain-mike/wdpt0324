@@ -1,29 +1,34 @@
 window.onload = () => {
 
+// Utilizziamo una funzione asincrona in modo da poter gestire in maniera semplice e con una sintassi facile da leggere le operazioni asincrone legate alla fecth
     async function call(){
-        const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=queen`)
-        const risultato = await response.json()
+        //La parola chiave await mi permette di far sì che ci sia un'attesa che termina quando l'esecuzione asincrona è terminata 
+        const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=queen`)//Salvo nella variabile response, l'oggetto di tipo response restituito dalla chiamata fetch. 
+        const risultato = await response.json()//Una volta ottenuta la response, La converto in json, ottenendo di fatto il contenuto dell'endpoint (I dati che devo utilizzare per costruire le card )
 
-        const target = document.querySelector('#target')
+        const target = document.querySelector('#target')//Cerco l'elemento con ID target, ossia l'area in cui costruirò le card. 
 
+        //Osservando l'endpoint potrai notare che restituisce un oggetto contenente una proprietà "data" che contiene un array di oggetti che rappresentano gli album.
+        //Ciclando l'array data andiamo a costruire una card per ogni oggetto presente nella proprietà "data". 
         risultato.data.forEach(el=>{
 
-            let temp = document.getElementsByTagName("template")[0];
-            let clone = temp.content.cloneNode(true);
+            let temp = document.getElementsByTagName("template")[0];//Cerco il tag template presente in pagina. 
+            let clone = temp.content.cloneNode(true);//Crea un clone del contenuto del tag template. 
 
+            //Nella variabile clone ora abbiamo degli elementi HTML sotto forma di oggetti del DOM, di conseguenza posso usare querySelector direttamente sulla variabile clone per cercare le porzioni di codice che voglio manipolare 
             const artistLink = clone.querySelector('.artist-link')
             const image = clone.querySelector('.image')
             const albumName = clone.querySelector('.album-name')
             const artistName = clone.querySelector('.artist-name')
 
 
-
-            artistLink.href = `dettaglio.html?album=${el.album.id}`
+            //Dopo aver selezionato tutti gli elementi da manipolare, procedo a scrivere al loro interno o ad assegnare valori ai loro attributi 
+            artistLink.href = `dettaglio.html?album=${el.album.id}`//Imposto un query param che mi permetta di navigare verso la pagina dettaglio dell'album, portando con me l'Id dell'album in questo modo potrò successivamente visualizzare nella pagina dettaglio l'album selezionato. 
             image.src = el.album.cover_medium
             albumName.textContent = el.album.title
             artistName.textContent = el.artist.name
 
-            target.appendChild(clone);
+            target.appendChild(clone);//Inserisco nella pagina la card appena creata 
 
         })
 

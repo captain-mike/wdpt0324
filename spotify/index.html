@@ -14,18 +14,19 @@
         <h1>Lista album</h1>
 
         <div class="row" id="target">
-            
+            <!-- Questo Div con ID target è il punto in cui costruiremo le card che rappresentano gli album  -->
         </div>
 
     </div>
 
+    <!-- Il tag template è uno dei tanti sistemi che ci vengono incontro quando vogliamo generare dell'HTML usando javascript. Il contenuto di questo tag non viene renderizzato, ma è posizionato nella pagina HTML per far sì che sia javascript a prenderlo e clonarlo (per poi utilizzarlo), Grazie a questo tag possiamo mantenere l'HTML all'interno del file HTML senza andare a sporcare il foglio javascript e di fatto mantenendo separate le logiche  -->
     <template>
         <div class="col-3">
             <a href="#" class="d-block artist-link">
                 <img src="https://picsum.photos/200/300" class="image" height="100">
                 <div class="dettagli">
-                    <p class="album-name">Nome album</p>
-                    <p class="artist-name">Nome artista</p>
+                    <p class="album-name"></p>
+                    <p class="artist-name"></p>
                 </div>
             </a>
         </div>
