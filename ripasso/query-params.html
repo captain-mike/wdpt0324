@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1></h1>
+    
+    <script>
+
+        const url = new URLSearchParams(location.search)
+        
+        console.log(url.has('nome'))
+
+        const nome = url.get('nome')
+
+        document.querySelector('h1').innerText = nome
+
+    </script>
+
+</body>
+</html>

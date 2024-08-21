@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+
+        {
+
+            // function Pizza(gusto, prezzo){
+            //     this.gusto = gusto
+            //     this.prezzo = prezzo
+            // }
+
+            class Pizza{
+                constructor(gusto, prezzo){
+                    this.gusto = gusto
+                    this.prezzo = prezzo
+                    this.dettagliPizza()
+                }
+
+                dettagliPizza(){
+                    console.log(`La pizza ${this.gusto} costa ${this.prezzo}€`)
+                }
+
+            }
+
+            const margherita = new Pizza('Margherita',5)
+            const diavola = new Pizza('Diavola', 1)
+
+            console.table([margherita, diavola])
+
+            margherita.dettagliPizza()
+            diavola.dettagliPizza()
+
+        }
+
+    </script>
+
+</body>
+</html>
