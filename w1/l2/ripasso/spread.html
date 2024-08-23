@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //spread su array
+        let array1 = [1,2,3,4,5,6,7,8,9,10]
+
+        console.log(...array1)
+
+        let array2 = [...array1,11,12,13,14]
+
+        console.log(array2);
+        console.log(array2[0]);
+
+        //effettuare una copia dell'array
+        let arrayCopy = [...array2]
+        console.table([array2, arrayCopy]);
+ 
+        //spread su oggetti
+
+
+        const accessData = {
+            email: 'esempio@esempio.it',
+            password: 'password'
+        }
+
+        const user = {
+            nome: 'Mario',
+            cognome: 'Rossi'
+        }
+
+        const userData = {
+            ...accessData,
+            ...user
+        }
+
+        console.log(userData);
+
+
+        //copiare un oggetto
+
+        const objCopy = {...userData}
+        console.log(objCopy);
+        
+        
+
+        
+        
+
+    </script>
+</body>
+</html>

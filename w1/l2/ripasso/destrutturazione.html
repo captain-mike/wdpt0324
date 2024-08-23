@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //destrutturazione su array
+        const array = [20, 300, 200] 
+        
+        const [n1, n2] = array//creo una variabile per ogni valore
+        console.log(n1);
+        
+        const [,,num3] = array//creo una variabile contenente il terzo valore dell'array
+        
+        console.log(num3);
+        
+        //destrutturazione su oggetti
+
+        const pizza = {
+            gusto: 'Margherita',
+            prezzo: 5
+        }
+
+        const {gusto, prezzo} = pizza
+
+        console.log(gusto, prezzo);//grazie alla destrutturazione ho le variabili
+        console.log(pizza.gusto, pizza.prezzo);//la sintassi senza destrutturazione è nettamewnte più lunga
+        
+
+    </script>
+</body>
+</html>
