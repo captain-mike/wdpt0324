@@ -1,3 +1,6 @@
+<!--
+Questo esercizio è una banale todo list che utilizziamo per esplorare l'utilizzo di local storage o session storage Quando abbiamo necessità di salvare oggetti o array 
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,18 +16,16 @@
 
     <div class="container">
 
+        <!--
+        Il funzionamento della todo list è molto semplice, abbiamo un input che viene utilizzato come campo testuale, che permetterà all'utente di inserire un testo, al click del bottone verrà creato l'HTML relativo al singolo todo che viene inserito all'interno del DOM 
+        -->
         <div class="row mt-5">
             <input id="testo" type="text" class="form-control">
             <button id="salva" class="btn btn-primary">Salva</button>
         </div>
 
         <div class="row mt-5" id="target">
-            <!-- <div class="col-6">
-                <div class="card">
-                    <span class="p-3">Comprare l'insalata</span> 
-                    <button class="btn btn-danger">Delete</button>
-                </div>
-            </div> -->
+<!-- In questo punto creiamo gli elementi attraverso l'utilizzo di javascript.  -->
         </div>
 
     </div>
@@ -40,31 +41,42 @@
         D: Delete 
         */
 
-        let storage = localStorage.getItem('todo')
+        let storage = localStorage.getItem('todo')//Provo a recuperare i todo salvati in storage, tenendo presente che l'utente potrebbe ancora non avere mai utilizzato l'applicazione, di conseguenza todo potrebbe restituire null 
 
-        let dati = storage ? JSON.parse(storage) : []
+        let dati = storage ? JSON.parse(storage) : []//Se il dato è presente nello storage, allora procedo a fare il Parse del dato presente in storage, in caso contrario, la variabile dati conterrà un array vuoto. 
+        //In local storage alla voce Todo stiamo salvando un array di oggetti in formato json, osando JSON.parse(), possiamo decodificare la stringa json per ottenere un oggetto/array
 
+        //Tieni presente che in local storage noi possiamo salvare solo ed esclusivamente stringhe 
+
+        //Creo le variabili contenenti gli elementi del DOM con cui devo interagire 
         const testo = document.querySelector('#testo');
         const salva = document.querySelector('#salva');
         const target = document.querySelector('#target');
-        let id = 0
+
+        //Attenzione! La generazione dell'ID È presente solo ai fini dell'esercizio, Creare gli ID degli oggetti non è compito del front end, ma di solito viene fatto lato back end, quindi non ripetere questa operazione in progetti futuri  
+        let id = 0//Inizializziamo la variabile ID che ci servirà per creare un ID finto per gli oggetti che salveremo 
 
 
 
+        //Procedo a ciclare la variabile dati e creare una card per ogni elemento tudo salvato in local storage. 
+        //In questo momento dati potrebbe contenere un array di oggetti oppure potrebbe essere un array vuoto, come puoi vedere alla riga 46
+        //Quindi, se l'utente ha salvato alcuni todo, questo ciclo andrà a costruire l'HTML permettendo all'utente di vedere gli elementi inseriti precedentemente, ma se l'array dati è vuoto non ci sarà alcuna iterazione  
         dati.forEach(el => {
             //READ
-            createCard(el.testo)
+            createCard(el.testo)//Questa funzione è descritta in fondo al documento e serve semplicemente a generare l'html partendo dal testo del todo. 
         })
 
 
+        //Quando l'utente clicca il tasto salva viene scatenata questa funzione. 
         salva.addEventListener('click', function () {
 
-            createCard(testo.value)
-            save(testo.value)
+            createCard(testo.value)//Viene generata una singola card partendo dal valore presente nel campo testo 
+            save(testo.value)//La funzione Save si occupa del salvataggio del nuovo testo in local storage, la trovi in fondo al documento  
 
         })
 
 
+        //Funzione che crea l'HTML e lo inserisce nel DOM. 
         function createCard(testo) {
 
             const col = document.createElement('div');
@@ -77,43 +89,50 @@
             card.classList.add('card')
 
             span.classList.add('p-3')
-            span.contentEditable = true
+            span.contentEditable = true//Questo è un trucchetto che permette di far sì che il testo presente nel Tag SPAN possa essere gestito e riscritto direttamente dall'utente, facendo comportare SPAN come una specie di tag input. 
             span.textContent = testo
 
             button.classList.add('btn', 'btn-danger')
             button.textContent = 'Delete'
+
             button.addEventListener('click', function(){
-                 deleteTodo(col) 
+                 deleteTodo(col)//Per una questione di ordine e pulizia del codice abbiamo spostato il funzionamento per la cancellazione in una funzione separata chiamata deleteTodo, che si occuperà di far sparire la card, ma anche di cancellare il dato salvato in local storage.  
             })
+
 
             updateButton.classList.add('btn', 'btn-warning')
             updateButton.textContent = 'Modifica'
             updateButton.addEventListener('click', function () {
                 //UPDATE
-                const elemento = dati.find(el => el.id === id)
-                elemento.testo = span.textContent
-                localStorage.setItem('todo', JSON.stringify(dati))
+                const elemento = dati.find(el => el.id === id)//Cerco all'interno del Rey dati l'elemento che voglio aggiornare e lo salvo nella variabile elemento 
+                elemento.testo = span.textContent//Sostituisco il testo con l'attuale contenuto del tag Span che l'utente potrebbe avere aggiornato grazie all'utilizzo dell'attributo contentEditable 
+                localStorage.setItem('todo', JSON.stringify(dati))//Termine dell'operazione sovrascrivo la voce Todo dello storage con una versione aggiornata del mio array contenente tutti i dati dei todo. 
+                //Utilizzo stringify per trasformare l'array di oggetti in una stringa formato json perché nel local storage non posso salvare nulla che non sia una stringa. 
             })
 
             col.append(card)
             card.append(span, button, updateButton)
 
             target.append(col)
-            id++
+            id++//Incremento l'id finto. Ti ricordo di non replicare questa operazione su un progetto vero in cui hai un back end. Siccome questa è un'operazione che il front end non deve fare  
         }
 
         function deleteTodo(col){
             col.remove()//Rimuove la card dal DOM. 
+            
             //DELETE
-            const indice = dati.findIndex(dato => dato.id === id)
-            dati.splice(indice, 1)
+            const indice = dati.findIndex(dato => dato.id === id)//Grazie a findIndex trovo l'indice(pisizione) nell'array, di un determinato oggetto avente uno specifico ID. 
+            dati.splice(indice, 1)//Ora che ho l'indice posso eliminare l'elemento dal raid utilizzando appunto questo indice.
+            //Splice permette di eliminare elementi da uno specifico array, indicando un indice di partenza e un numero di elementi da eliminare, dato che in questo momento volevamo eliminare un solo elemento, il secondo argomento che gli diamo sarà appunto il numero 1 
 
             //altro modo per eliminare da un array
             // dati = dati.filter(dato => dato.id !== id)
 
-            localStorage.setItem('todo', JSON.stringify(dati))
+            localStorage.setItem('todo', JSON.stringify(dati))//Dopo aver effettuato l'eliminazione dell'oggetto dall'array di oggetti chiamato dati, aggiorno in local storage alla, passando come argomento l'array aggiornato, sottoposto alla trasformazione con stringyfy.(Stessa operazione effettuata alla Riga 109. ) 
         }
 
+        //La funzione Save accetta un argomento in ingresso chiamato testo che è appunto il testo del todo da salvare e crea un oggetto contenente due proprietà: L'ID e il testo del todo.
+        //Dopodiché aggiunge il nuovo oggetto all'array dati, e procede ad aggiornare il local storage 
         function save(testo) {
             //create
             dati.push({
