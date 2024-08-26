@@ -12,12 +12,14 @@
         localStorage//Salva dati in modo permanente. 
         sessionStorage//I dati vengono eliminati al termine della sessione 
 
+        //Session storage e local storage, seppur salvando i dati con una persistenza differente, sfruttano gli stessi metodi 
 
 
-        sessionStorage.setItem('nome','Maria')
+        sessionStorage.setItem('nome','Maria')//Il metodo SET item crea una nuova voce Ed assegna ad essa un valore. Se la voce è già esistente, allora settaitem si occupa di aggiornarne il valore. Richiede due stringhe, la prima riguarda il nome della chiave, mentre la seconda è il valore che associamo a quella chiave. 
 
-        console.log( sessionStorage.getItem('nome') );
+        console.log( sessionStorage.getItem('nome') );//Get item ci serve per recuperare il valore legato a una specifica chiave presente nello storage. L'argomento passato deve essere appunto il nome della chiave che abbiamo salvato precedentemente. Qualora la chiave ricercata non sia presente nel local storage per qualsiasi motivo, get item restituisce null, Quindi è opportuno verificare l'esistenza del dato (anche con un if) prima di adoperarlo 
         
+        //Ricordati che local storage e session storage sono presenti nel browser dell'utente. Di conseguenza i dati non vengono salvati in un server e quindi sono accessibili solo ed esclusivamente dallo specifico browser che l'utente ha utilizzato. Se l'utente cambia browser non troverà i dati salvati precedentemente
 
 
     </script>
