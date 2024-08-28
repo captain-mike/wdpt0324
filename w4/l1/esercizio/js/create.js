@@ -21,7 +21,7 @@ crea.addEventListener('click', e => {
     }
 
     //La funzione call è definita in fondo al documento ed è quella che si occuperà di effettuare la richiesta POST
-    call()
+    call(pizza)
 
 
     // Al posto della funzione call è possibile eseguire la richiesta direttamente con fetch, come vedi in questo commento 
@@ -42,7 +42,7 @@ crea.addEventListener('click', e => {
 
 })
 
-async function call(){
+async function call(pizza){
     //Per effettuare la richiesta di tipo post non basta inserire l'indirizzo dell'endpoint, ma bisogna fornire un secondo argomento che sarà un oggetto contenente la proprietà metod con valore POST, la proprietà body che conterrà i dati inviati al server(L'oggetto che stiamo creando), ed eventualmente gli headers del caso
     const response = await fetch('http://localhost:3000/pizze', {
         method: 'POST',//Con questa proprietà comunico al backend che sto facendo una richiesta di creazione. 
