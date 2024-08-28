@@ -1,0 +1,76 @@
+{
+  "pizze": [
+    {
+      "gusto": "Margherita",
+      "prezzo": 5,
+      "disponibile": true,
+      "id": 1
+    },
+    {
+      "gusto": "Diavola",
+      "prezzo": 1,
+      "disponibile": true,
+      "id": 2
+    },
+    {
+      "gusto": "Hawayana",
+      "prezzo": 1000,
+      "disponibile": false,
+      "id": 3
+    },
+    {
+      "gusto": "Laborum perspiciatis",
+      "prezzo": 17,
+      "disponibile": true,
+      "id": 4
+    },
+    {
+      "gusto": "",
+      "prezzo": 0,
+      "disponibile": false,
+      "id": 5
+    },
+    {
+      "gusto": "",
+      "prezzo": 0,
+      "disponibile": false,
+      "id": 6
+    },
+    {
+      "gusto": "",
+      "prezzo": 0,
+      "disponibile": false,
+      "id": 7
+    },
+    {
+      "gusto": "",
+      "prezzo": 0,
+      "disponibile": false,
+      "id": 8
+    },
+    {
+      "gusto": "",
+      "prezzo": 0,
+      "disponibile": false,
+      "id": 9
+    },
+    {
+      "gusto": "",
+      "prezzo": 0,
+      "disponibile": false,
+      "id": 10
+    },
+    {
+      "gusto": "",
+      "prezzo": 0,
+      "disponibile": false,
+      "id": 11
+    },
+    {
+      "gusto": "Capricciosa",
+      "prezzo": 9,
+      "disponibile": true,
+      "id": 12
+    }
+  ]
+}
