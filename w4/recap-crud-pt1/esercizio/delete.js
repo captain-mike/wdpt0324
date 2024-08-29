@@ -1,4 +1,4 @@
-const id = 13
+const id = 5
 fetch(`http://localhost:3000/pizze/${id}`,{
     method: 'DELETE',
     headers: {'Content-Type': 'application/json'}
