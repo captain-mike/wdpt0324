@@ -1,0 +1,46 @@
+{
+  "pizze": [
+    {
+      "gusto": "Margherita",
+      "prezzo": 4.5,
+      "disponibile": true,
+      "id": 1
+    },
+    {
+      "gusto": "Diavola",
+      "prezzo": 1,
+      "disponibile": true,
+      "id": 2
+    },
+    {
+      "gusto": "Hawayana",
+      "prezzo": 1000,
+      "disponibile": false,
+      "id": 3
+    },
+    {
+      "gusto": "4 stagioni",
+      "prezzo": 8,
+      "disponibile": true,
+      "id": 4
+    },
+    {
+      "gusto": "Obcaecati culpa ex ",
+      "prezzo": 1,
+      "disponibile": false,
+      "id": 7
+    },
+    {
+      "gusto": "Quis eum qui molliti",
+      "prezzo": 69,
+      "disponibile": true,
+      "id": 8
+    },
+    {
+      "gusto": "Sunt minim eius eu e",
+      "prezzo": 96,
+      "disponibile": true,
+      "id": 9
+    }
+  ]
+}
